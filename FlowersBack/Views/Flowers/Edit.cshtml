@@ -44,7 +44,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.LastPurchase, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastPurchase, new { htmlAttributes = new { @class = "form-control" } })
+                <div class='input-group date' id='datepicker' style="width:280px">
+                    @Html.EditorFor(model => model.LastPurchase, new { htmlAttributes = new { @class = "form-control" } })
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 @Html.ValidationMessageFor(model => model.LastPurchase, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,12 +57,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <span class="btn btn-warning btn-file">
-                    @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file" })
-                    @*<input type="file" name="file" />*@
-
-
-                </span>
+                <div class="file-input-new">
+                    <div class="input-group" style="width:280px">
+                        <div tabindex="500" class="form-control file-caption">
+                            <div class="file-caption-name" id="NombreArchivo">
+                            </div>
+                        </div>
+                        <div class="input-group-btn" style="height:auto">
+                            <div tabindex="500" class="btn btn-primary btn-file">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                                File Search...
+                                @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file", id = "files" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -95,4 +109,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+
+        $(function() {
+
+            $('#datepicker').datetimepicker();
+
+        })
+
+</script>
+
 }

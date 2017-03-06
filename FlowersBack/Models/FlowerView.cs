@@ -20,7 +20,7 @@ namespace FlowersBack.Models
         [Required]
         public decimal Price { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]//Voy a utilizar l datatimepicker
         [Display(Name = "Last Purchase")]
         public DateTime? LastPurchase { get; set; }
 
