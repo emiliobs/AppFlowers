@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FlowersBack.Models;
@@ -14,7 +15,12 @@ namespace FlowersBack.Controllers.API
 {
     public class FlowersController : ApiController
     {
-        private DataContext db = new DataContext();
+        private DataContext db;
+
+        public FlowersController()
+        {
+            db = new DataContext();
+        }
 
         // GET: api/Flowers
         public IQueryable<Flower> GetFlowers()
@@ -24,9 +30,9 @@ namespace FlowersBack.Controllers.API
 
         // GET: api/Flowers/5
         [ResponseType(typeof(Flower))]
-        public IHttpActionResult GetFlower(int id)
+        public async Task<IHttpActionResult> GetFlower(int id)
         {
-            Flower flower = db.Flowers.Find(id);
+            Flower flower = await db.Flowers.FindAsync(id);
             if (flower == null)
             {
                 return NotFound();
@@ -37,7 +43,7 @@ namespace FlowersBack.Controllers.API
 
         // PUT: api/Flowers/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutFlower(int id, Flower flower)
+        public async Task<IHttpActionResult> PutFlower(int id, Flower flower)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +59,7 @@ namespace FlowersBack.Controllers.API
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +78,7 @@ namespace FlowersBack.Controllers.API
 
         // POST: api/Flowers
         [ResponseType(typeof(Flower))]
-        public IHttpActionResult PostFlower(Flower flower)
+        public async Task<IHttpActionResult> PostFlower(Flower flower)
         {
             if (!ModelState.IsValid)
             {
@@ -80,23 +86,23 @@ namespace FlowersBack.Controllers.API
             }
 
             db.Flowers.Add(flower);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = flower.FlowerId }, flower);
         }
 
         // DELETE: api/Flowers/5
         [ResponseType(typeof(Flower))]
-        public IHttpActionResult DeleteFlower(int id)
+        public async Task<IHttpActionResult> DeleteFlower(int id)
         {
-            Flower flower = db.Flowers.Find(id);
+            Flower flower = await db.Flowers.FindAsync(id);
             if (flower == null)
             {
                 return NotFound();
             }
 
             db.Flowers.Remove(flower);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(flower);
         }

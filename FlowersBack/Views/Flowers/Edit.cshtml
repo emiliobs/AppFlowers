@@ -1,4 +1,4 @@
-﻿@model FlowersBack.Models.Flower
+﻿@model FlowersBack.Models.FlowerView
 
 @{
     ViewBag.Title = "Edit";
@@ -7,15 +7,23 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Flowers", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h4>Flower</h4>
+
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img src="@Url.Content(Model.Image)" alt="Image" style="width: 150px; height: 150px; max-width: 100%; height: auto;" />
+        }
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.FlowerId)
+        @Html.HiddenFor(model => model.Image)
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -42,10 +50,14 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                <span class="btn btn-warning btn-file">
+                    @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file" })
+                    @*<input type="file" name="file" />*@
+
+
+                </span>
             </div>
         </div>
 
@@ -69,8 +81,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success"/>
-                @Html.ActionLink("Back to List", "Index", new {}, new { @class = "btn btn-default" })
+                <button type="submit" title="Save." class="btn btn-success">Save. <span class="glyphicon glyphicon-floppy-save"></span></button>
+                <a href="/Flowers/Index" class="btn btn-default" title="Back to List.">Bact To List. <span class="glyphicon glyphicon-backward"></span></a>
+
             </div>
         </div>
     </div>

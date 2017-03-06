@@ -4,12 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listed type Flowers.</h2>
+<br />
+
 
 <p>
-    @Html.ActionLink("Create New", "Create", new {}, new {@class="btn btn-success"})
+    @* @Html.ActionLink("Create New", "Create", new {}, new {@class="btn btn-success"})*@
+    <a href="/Flowers/Create" class="btn btn-success" title="New.">Create New. <span class="glyphicon glyphicon-plus"></span></a>
+
 </p>
-<table class="table">
+<table class="table table-striped table-responsive table-hover table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -18,7 +22,8 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastPurchase)
+            Last Purchase
+            @*@Html.DisplayNameFor(model => model.LastPurchase)*@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Image)
@@ -32,36 +37,44 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastPurchase)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.Image)*@
-            @if (!string.IsNullOrEmpty(item.Image))
-            {
-                 <img src="@Url.Content(item.Image)" alt="Image" style="width: 100px; height: 150px; max-width: 100%; height: auto;"/>
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observation)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FlowerId }, new {@class="btn btn-info"})
-            @Html.ActionLink("Details", "Details", new { id=item.FlowerId }, new { @class = "btn btn-primary" })
-            @Html.ActionLink("Delete", "Delete", new { id=item.FlowerId }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastPurchase)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                @if (!string.IsNullOrEmpty(item.Image))
+                {
+                    <img src="@Url.Content(item.Image)" alt="Image" style="width: 100px; height: 150px; max-width: 100%; height: auto;" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observation)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.FlowerId }, new {@class="btn btn-info"})
+                    @Html.ActionLink("Details", "Details", new { id=item.FlowerId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id=item.FlowerId }, new { @class = "btn btn-danger" })*@
+
+                <a href="/Flowers/Edit/@item.FlowerId" class="btn btn-info" title="Edit.">Edit. <span class="glyphicon glyphicon-edit"></span></a>
+
+                <a href="/Flowers/Details/@item.FlowerId" class="btn btn-primary" title="Details.">Details. <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+                <a href="/Flowers/Delete/@item.FlowerId" class="btn btn-danger" title="Delete.">Delete. <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>

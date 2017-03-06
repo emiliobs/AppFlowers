@@ -72,8 +72,10 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success"/>
-                @Html.ActionLink("Back to List", "Index", new {}, new {@class="btn btn-default"})
+                @*<input type="submit" value="Create" class="btn btn-success"/>*@
+                <button type="submit" title="Save." class="btn btn-success">Save. <span class="glyphicon glyphicon-floppy-save"></span></button>
+               @*@Html.ActionLink("Back to List", "Index", new {}, new {@class="btn btn-default"})*@
+                <a href="/Flowers/Index" class="btn btn-default" title="Back to List.">Back to List. <span class="glyphicon glyphicon-backward"></span></a>
             </div>
         </div>
     </div>

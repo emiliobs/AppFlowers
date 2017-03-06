@@ -40,7 +40,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <img src="@Url.Content(Model.Image)" alt="Image" style="width: 150px; height: 150px; max-width: 100%; height: auto;" />
+            }
         </dd>
 
         <dt>
@@ -65,8 +68,10 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" />
-            @Html.ActionLink("Back to List", "Index", new {}, new {@class="btn btn-default"})
+            @*<input type="submit" value="Delete" class="btn btn-danger"/>*@
+             <button type="submit" class="btn btn-danger" title="Delete.">Delete. <span class="glyphicon glyphicon-trash"></span></button>
+            <a href="/Flowers/Index" class="btn btn-default" title="Back to List.">Back to List. <span class="glyphicon glyphicon-backward"></span></a>
+
         </div>
     }
 </div>

@@ -114,7 +114,23 @@ namespace FlowersBack.Controllers
                 return HttpNotFound();
             }
 
-            return View(flower);
+            return View(ToView(flower));
+        }
+
+        private FlowerView ToView(Flower view)
+        {
+            return new FlowerView()
+            {
+                Description = view.Description,
+                FlowerId = view.FlowerId,
+                Image = view.Image,
+                IsActive = view.IsActive,
+                LastPurchase = view.LastPurchase,
+                Observation = view.Observation,
+                Price = view.Price,
+
+
+            };
         }
 
         // POST: Flowers/Edit/5
@@ -122,17 +138,30 @@ namespace FlowersBack.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FlowerId,Description,Price,LastPurchase,Image,IsActive,Observation")] Flower flower)
+        public ActionResult Edit(FlowerView flowerView)
         {
             if (ModelState.IsValid)
             {
+                var picture = flowerView.Image;
+                var folder = "~/Content/Images";
+
+                if (flowerView.ImageFile != null)
+                {
+                    picture = Fileshelper.UploadPhoto(flowerView.ImageFile, folder);
+                    picture = $"{folder}/{picture}";
+                }
+
+                var flower = ToFlower(flowerView);
+                flower.Image = picture;
+
                 db.Entry(flower).State = EntityState.Modified;
 
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            return View(flower);
+
+            return View(flowerView);
         }
 
         // GET: Flowers/Delete/5

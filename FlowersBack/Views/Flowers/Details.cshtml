@@ -39,8 +39,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Image)
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <img src="@Url.Content(Model.Image)" alt="Image" style="width: 150px; height: 150px; max-width: 100%; height: auto;" />
+            }
+
         </dd>
+
+
 
         <dt>
             @Html.DisplayNameFor(model => model.IsActive)
@@ -61,6 +67,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FlowerId }, new {@class="btn btn-info"})
-    @Html.ActionLink("Back to List", "Index", new {}, new {@class="btn btn-default"})
+    <a href="/Flowers/Edit/@Model.FlowerId" class="btn btn-info" title="Edit.">Edit. <span class="glyphicon glyphicon-edit"></span></a>
+    <a href="/Flowers/Index" class="btn btn-default" title="Back to List.">Back to List. <span class="glyphicon glyphicon-backward"></span></a>
+
 </p>
