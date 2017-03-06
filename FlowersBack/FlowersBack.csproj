@@ -261,6 +261,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Utilities\fondo.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -303,6 +304,15 @@
     <Content Include="Views\Flowers\Create.cshtml" />
     <Content Include="Views\Flowers\Edit.cshtml" />
     <Content Include="Views\Flowers\Delete.cshtml" />
+    <Content Include="Utilities\Configuración del Ambiente de Desarrollo para Xamarin.docx" />
+    <Content Include="Utilities\Creating and consuming services from Xamarin Forms App on Azure.docx" />
+    <Content Include="Utilities\CursoXamarin Juancaarlos.rar" />
+    <Content Include="Utilities\Divisas 2 MVVM.docx" />
+    <Content Include="Utilities\Divisas MVVM.docx" />
+    <Content Include="Utilities\lab04.pdf" />
+    <Content Include="Utilities\lab05.pdf" />
+    <Content Include="Utilities\MVC.docx" />
+    <Content Include="Utilities\MVVM.docx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
