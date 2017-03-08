@@ -237,6 +237,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\caramba.jpg" />
+    <Content Include="Images\cheerio.png" />
+    <Content Include="Images\darkpink.jpg" />
+    <Content Include="Images\Donpedro.png" />
+    <Content Include="Images\glacier.jpg" />
+    <Content Include="Images\hibiscus.jpg" />
+    <Content Include="Images\moomwalk.jpg" />
+    <Content Include="Images\rosa-freedom.jpg" />
+    <Content Include="Images\rosa.jpg" />
+    <Content Include="Images\sweetwillia,.jpg" />
+    <Content Include="Images\taiga.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\fileupload.js" />
     <Content Include="Scripts\locales\bootstrap-datetimepicker.es.js" />
@@ -247,8 +258,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\FlowerBack - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\SomeeFlowers.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FlowersBack20170308074135 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -316,7 +327,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

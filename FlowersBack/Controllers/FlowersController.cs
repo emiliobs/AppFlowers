@@ -59,7 +59,7 @@ namespace FlowersBack.Controllers
             {
 
                 var pic = string.Empty;
-                var folder = "~/Content/Images";
+                var folder = "~/Images";
 
                 if (flowerView.ImageFile != null)
                 {
@@ -143,7 +143,7 @@ namespace FlowersBack.Controllers
             if (ModelState.IsValid)
             {
                 var picture = flowerView.Image;
-                var folder = "~/Content/Images";
+                var folder = "~/Images";
 
                 if (flowerView.ImageFile != null)
                 {
