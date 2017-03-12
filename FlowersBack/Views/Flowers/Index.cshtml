@@ -31,9 +31,9 @@
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Observation)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -59,9 +59,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Observation)
-            </td>
+            </td>*@
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.FlowerId }, new {@class="btn btn-info"})
                     @Html.ActionLink("Details", "Details", new { id=item.FlowerId }, new { @class = "btn btn-primary" })

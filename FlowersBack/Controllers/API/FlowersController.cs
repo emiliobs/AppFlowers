@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FlowersBack.Models;
+using FlowersBack.Classes;
 
 namespace FlowersBack.Controllers.API
 {
@@ -43,18 +45,35 @@ namespace FlowersBack.Controllers.API
 
         // PUT: api/Flowers/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutFlower(int id, Flower flower)
+        public async Task<IHttpActionResult> PutFlower(int id, FlowersRequest flowersRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != flower.FlowerId)
+            if (id != flowersRequest.FlowerId)
             {
                 return BadRequest();
             }
 
+            if (flowersRequest.ImageArray != null && flowersRequest.ImageArray.Length > 0)
+            {
+                var stream = new MemoryStream(flowersRequest.ImageArray);
+                var guid = Guid.NewGuid().ToString();
+                var file = $"{guid}.jpg";
+                var folder = "~/Content/Images";
+                var fullpath = $"{folder}/{file}";
+                var response = Fileshelper.UploadPhoto(stream, folder, file);
+
+                if (response)
+                {
+                    flowersRequest.Image = fullpath;
+                }
+
+            }
+
+            var flower = ToFlower(flowersRequest);
             db.Entry(flower).State = EntityState.Modified;
 
             try
@@ -78,17 +97,49 @@ namespace FlowersBack.Controllers.API
 
         // POST: api/Flowers
         [ResponseType(typeof(Flower))]
-        public async Task<IHttpActionResult> PostFlower(Flower flower)
+        public async Task<IHttpActionResult> PostFlower(FlowersRequest flowersRequest)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            if (flowersRequest.ImageArray != null && flowersRequest.ImageArray.Length > 0)
+            {
+                var stream = new MemoryStream(flowersRequest.ImageArray);
+                var guid = Guid.NewGuid().ToString();
+                var file = $"{guid}.jpg";
+                var folder = "~/Content/Images";
+                var fullpath = $"{folder}/{file}";
+                var response = Fileshelper.UploadPhoto(stream, folder, file);
+
+                if (response)
+                {
+                    flowersRequest.Image = fullpath;
+                }
+
+            }
+
+            var flower = ToFlower(flowersRequest);
+
             db.Flowers.Add(flower);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = flower.FlowerId }, flower);
+        }
+
+        private Flower ToFlower(FlowersRequest flowersRequest)
+        {
+             return new Flower()
+             {
+                 Description = flowersRequest.Description,
+                 Image = flowersRequest.Image,
+                 FlowerId = flowersRequest.FlowerId,
+                 IsActive = flowersRequest.IsActive,
+                 LastPurchase = flowersRequest.LastPurchase,
+                 Observation = flowersRequest.Observation,
+                 Price = flowersRequest.Price,
+             };
         }
 
         // DELETE: api/Flowers/5
