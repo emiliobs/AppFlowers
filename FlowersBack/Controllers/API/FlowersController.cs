@@ -62,7 +62,7 @@ namespace FlowersBack.Controllers.API
                 var stream = new MemoryStream(flowersRequest.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = $"{guid}.jpg";
-                var folder = "~/Content/Images";
+                var folder = "~/Images";
                 var fullpath = $"{folder}/{file}";
                 var response = Fileshelper.UploadPhoto(stream, folder, file);
 
@@ -109,7 +109,7 @@ namespace FlowersBack.Controllers.API
                 var stream = new MemoryStream(flowersRequest.ImageArray);
                 var guid = Guid.NewGuid().ToString();
                 var file = $"{guid}.jpg";
-                var folder = "~/Content/Images";
+                var folder = "~/Images";
                 var fullpath = $"{folder}/{file}";
                 var response = Fileshelper.UploadPhoto(stream, folder, file);
 
