@@ -152,6 +152,7 @@ namespace FlowersBack.Controllers
                 }
 
                 var flower = ToFlower(flowerView);
+
                 flower.Image = picture;
 
                 db.Entry(flower).State = EntityState.Modified;

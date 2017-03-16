@@ -21,7 +21,8 @@ namespace FlowersBack
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
-                "~/Scripts/bootstrap-datetimepicker.js",
+                  "~/Scripts/moment.js",
+                "~/Scripts/bootstrap-datetimepicker.min.js",
                 "~/Scripts/fileupload.js",
                 "~/Scripts/respond.js"));
 

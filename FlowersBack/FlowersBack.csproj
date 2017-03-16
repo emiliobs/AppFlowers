@@ -228,12 +228,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datetimepicker.css" />
-    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap1.css" />
-    <Content Include="Content\bootstrap.min1.css" />
-    <Content Include="Content\datepicker.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -249,11 +245,9 @@
     <Content Include="Images\rosa.jpg" />
     <Content Include="Images\sweetwillia,.jpg" />
     <Content Include="Images\taiga.jpg" />
-    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\fileupload.js" />
     <Content Include="Scripts\locales\bootstrap-datetimepicker.es.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.js" />
-    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -270,6 +264,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />

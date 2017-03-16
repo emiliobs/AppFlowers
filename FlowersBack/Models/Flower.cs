@@ -19,7 +19,7 @@ namespace FlowersBack.Models
 
         //[DataType(DataType.Date)]//Voy a utilizar l datatimepicker
         [Display(Name = "Last Purchase")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
+       //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime? LastPurchase { get; set; }
 
         public string   Image { get; set; }
